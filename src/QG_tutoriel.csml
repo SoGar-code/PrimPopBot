@@ -7,6 +7,7 @@ start:
   do CONTACT = Button("🙌Entrer en contact avec des personnes")
   do VISIOCONF = Button("🎦Participer à une visioconférene (Jitsi)")
   do DECOR = Button("❔Intéragir avec le décor")
+  do EMOJI = Button("😀Utiliser des emojis")
   do CUSTOM = Button("🤖Système de personalisation")
   do SON = Button("🔊Réglages ambiance sonore")
   do INFOS = Button("🖼️Voir les informations d'une personne (à venir)")
@@ -17,7 +18,7 @@ start:
   say "Voici la liste des fonctionnalités, quelle est celle que vous souhaitez approfondir ?"
   say Question(
      button_type="quick_reply",
-     buttons = [DEBUTANTS, CONTACT, VISIOCONF, DECOR, CUSTOM, SON, INFOS, AIDE]
+     buttons = [DEBUTANTS, CONTACT, VISIOCONF, DECOR, EMOJI, CUSTOM, SON, INFOS, AIDE]
   )
   hold
 
@@ -67,6 +68,24 @@ start:
 		say "Quand vous vous déplacez sur des traces de pas, vous verrez une fenêtre apparaître."
 		goto fintuto
 	}
+
+  if (event match EMOJI) {
+		say Typing(1000)
+		say "Pour utiliser des emojis, cliquez sur votre personnage, vous verrez apparaître un cercle d'emojis."
+    say Typing(1000)
+    say Image("https://cdn.csml.dev/customers/08b05532-7de0-447d-916a-0e11e9475b3b/files/e5b3ee31-8c89-42c6-ae6f-f07819d12920/emoji_example.gif")
+    say Typing(1000)
+    say "Sélectionnez directement celui que vous souhaitez !"
+		goto fintuto
+	}
+
+  if (event match CUSTOM) {
+    say Typing(1000)
+		say "Pour personnaliser votre personnage, vous pouvez regarder cette vidéo :"
+    say Typing(1000)
+    say Video("https://cdn.csml.dev/customers/08b05532-7de0-447d-916a-0e11e9475b3b/files/d36035e1-1f46-40cb-a082-834f21b1906b/customize-your-woka.mp4")
+		goto fintuto    
+  }
 
 fintuto:
   say "Que voulez-vous faire ?"
