@@ -5,8 +5,8 @@ start:
   choixtuto:
   do DEBUTANTS = Button("💪Trucs et astuces débutants.tes")
   do CONTACT = Button("🙌Entrer en contact avec des personnes")
-  do VISIOCONF = Button("🎦Participer à une visioconférene (Jitsi)")
-  do DECOR = Button("❔Intéragir avec le décor")
+  do VISIOCONF = Button("🎦Participer à une visioconférence (Jitsi)")
+  do DECOR = Button("❔Interagir avec le décor")
   do EMOJI = Button("😀Utiliser des emojis")
   do CUSTOM = Button("🤖Système de personalisation")
   do SON = Button("🔊Réglages ambiance sonore")
@@ -18,7 +18,7 @@ start:
   say "Voici la liste des fonctionnalités, quelle est celle que vous souhaitez approfondir ?"
   say Question(
      button_type="quick_reply",
-     buttons = [DEBUTANTS, CONTACT, VISIOCONF, DECOR, EMOJI, CUSTOM, SON, INFOS, AIDE]
+     buttons = [DEBUTANTS, CONTACT, VISIOCONF, DECOR, EMOJI, CUSTOM, SON, INFOS, AIDE, MENU]
   )
   hold
 
@@ -85,6 +85,35 @@ start:
     say Typing(1000)
     say Video("https://cdn.csml.dev/customers/08b05532-7de0-447d-916a-0e11e9475b3b/files/d36035e1-1f46-40cb-a082-834f21b1906b/customize-your-woka.mp4")
 		goto fintuto    
+  }
+
+  if (event match SON) {
+    say Typing(1000)
+		say "Dans certaines zones du QG (espace libre et rivière), Workadventure ajoute une ambiance sonore."
+    say Typing(500)
+    say "Dans ce cas, vous pouvez régler le volume en utilisant le curseur qui apparaît en haut au milieu de votre écran."
+    say Typing(500)
+    say Image("https://cdn.csml.dev/customers/08b05532-7de0-447d-916a-0e11e9475b3b/files/786aaaf0-7fad-4069-a1e4-ceeb77de2031/volume_sonore.png")
+		goto fintuto        
+  }
+
+  if (event match INFOS) {
+    say Typing(1000)
+		say "🚧 En construction ! Cette fonctionnalité en cours de développement permettra de voir des infos sur votre interlocuteur..."
+    say "Par exemple : prénom et nom, ..."
+		goto fintuto
+  }
+
+  if (event match AIDE) {
+    say Typing(1000)
+		say "Si vous rencontrez des bugs ou avez besoin d'assistance technique, adressez-vous à **Jako**, **Clara** ou **Get** ici au QG."
+		goto fintuto
+  }
+
+  // all other cases, including back to home menu
+  else {
+		say Typing(1000)
+		goto flow Default
   }
 
 fintuto:
