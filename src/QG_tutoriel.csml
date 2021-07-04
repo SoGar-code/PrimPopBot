@@ -14,7 +14,7 @@ start:
   do MENU = Button("⤴️Retour au menu d'accueil")
 
   say Typing(2000)
-  say "Voici la liste des fonctionalités, quelle est celle que vous souhaitez approfondir ?"
+  say "Voici la liste des fonctionnalités, quelle est celle que vous souhaitez approfondir ?"
   say Question(
      button_type="quick_reply",
      buttons = [DEBUTANTS, CONTACT, VISIOCONF, DECOR, CUSTOM, SON, INFOS, AIDE]
@@ -70,7 +70,7 @@ start:
 
 fintuto:
   say "Que voulez-vous faire ?"
-  do BACK1 = Button("⬆️Revenir à la liste des fonctionalités")
+  do BACK1 = Button("⬆️Revenir à la liste des fonctionnalités")
 	do BACK2 = Button("⬆️Retour au menu d'accueil")
     say Question(
      button_type="quick_reply",
