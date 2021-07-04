@@ -1,0 +1,137 @@
+/**
+ * Welcome to CSML Studio!
+ *
+ * This simple CSML starter flow works out of the box, and you can easily
+ * try it on the right hand side by clicking on `build and run`.
+ *
+ * Some useful CSML links:
+ * 👉 Getting started: https://docs.csml.dev/studio/getting-started
+ * 👉 Give CSML a 🌟 on Github: https://github.com/CSML-by-Clevy/csml-engine
+ * 👉 Join the CSML community on Slack: https://csml.dev/slack
+ */
+start:
+  // It's easy to display images as well!
+  say Image("https://primairepopulaire.fr/wp-content/uploads/2021/06/logo-new-primairepopulaire.png")
+
+  say "QG de la primaire populaire PrimPopBot, assistance et aide."
+
+  // Add some typing delay to make your conversation more realistic!
+  say Typing(1000)
+
+  say "Ici c'est le QG virtuel pour la primaire populaire ! 👋, je suis PrimPopBot, pour vous servir."
+
+  say Typing(1000)
+  goto topics
+
+topics:
+  do overview = Button("🏡 Présentation du QG virtuel")
+  do map = Button("🗺️ Plan du QG")
+  do functionalities = Button("🎚️ Présentation des fonctionalités")
+  say Question(
+    title="Sur quels sujets souhaitez-vous avoir plus d'informations ?",
+    buttons = [overview, map, functionalities]
+  )
+  hold
+
+  if (event.match(overview)) {
+    goto overview
+  }
+  else if (event.match(map)) {
+    goto map
+  }
+  else if (event.match(functionalities)) {
+    goto functionalities
+  }
+
+overview:
+  say "La plateforme sert à bla bla bla"
+   
+  say Typing(1000)
+
+  say "à suivre"
+
+  hold 
+
+  goto topics
+
+map:
+  say "Oui, voici la carte décrivant les différents endroits :"
+
+  say Image("https://mapwa.net/static/perso/2022/map/qg/qg-PP.png")
+
+  hold
+
+  goto topics
+
+functionalities:
+  do contact = Button("🙌 Entrer en contact avec des personnes")
+  do visio = Button("🎦 Participer à une visioconférene (Jitsi)")
+  do interaction = Button(" Interagir avec le décor")
+  do customization = Button("🤖 Système de personalisation")
+  do sound = Button("🔊 Réglages des ambiance sonore")
+  do personal_info = Button("🖼️ Voir les informations d'une personne (à venir)")
+  do bugs = Button("🤯 Des bugs ? Besoin d'une aide technique ?")
+  do back = Button("⤴️ Retour au menu d'accueil")
+
+  say Question(
+    title="Les fonctionalités sont les suivantes...",
+    buttons=[contact, visio, interaction, customization, 
+            sound, personal_info, bugs, back]
+  )
+
+  hold
+
+  if (event.match(contact)) {
+    goto contact_step
+  }
+  else if (event.match(visio)) {
+    goto visio_step
+  }
+  else if (event.match(interaction)) {
+    goto interaction_step
+  }
+  else if (event.match(customization)) {
+    goto customization_step
+  }
+  else if (event.match(sound)) {
+    goto sound_step
+  }
+  else if (event.match(personal_info)) {
+    goto personal_info_step
+  }
+  else if (event.match(bugs)) {
+    goto bugs_step
+  }
+  else
+    goto topics
+
+contact_step:
+  say "Contact"
+  goto topics
+
+visio_step:
+  say "Visio"
+  goto topics
+
+interaction_step:
+  say "Interaction"
+  goto topics
+
+customization_step:
+  say "customization"
+  goto topics
+
+sound_step:
+  say "sound"
+  goto topics
+
+personal_info_step:
+  say "personal_info"
+  goto topics
+
+bugs_step:
+  say "bugs"
+  goto topics
+
+  // Finish the conversation
+  goto end
