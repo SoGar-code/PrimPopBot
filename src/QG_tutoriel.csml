@@ -1,0 +1,89 @@
+start:
+
+  goto choixtuto
+  
+  choixtuto:
+  do DEBUTANTS = Button("💪Trucs et astuces débutants.tes")
+  do CONTACT = Button("🙌Entrer en contact avec des personnes")
+  do VISIOCONF = Button("🎦Participer à une visioconférene (Jitsi)")
+  do DECOR = Button("❔Intéragir avec le décor")
+  do CUSTOM = Button("🤖Système de personalisation")
+  do SON = Button("🔊Réglages ambiance sonore")
+  do INFOS = Button("🖼️Voir les informations d'une personne (à venir)")
+  do AIDE = Button("🤯Des bugs ? Besoin d'une aide technique ?")
+  do MENU = Button("⤴️Retour au menu d'accueil")
+
+  say Typing(2000)
+  say "Voici la liste des fonctionalités, quelle est celle que vous souhaitez approfondir ?"
+  say Question(
+     button_type="quick_reply",
+     buttons = [DEBUTANTS, CONTACT, VISIOCONF, DECOR, CUSTOM, SON, INFOS, AIDE]
+  )
+  hold
+
+	if (event match DEBUTANTS) {
+		say Typing(2000)
+		say "Tout d'abord, bravo ! Si vous êtes arrivé.ées jusqu'à moi, c'est déjà une belle étape."
+    say Image("https://media.giphy.com/media/1mgpdUbUyT7z0olfmq/giphy.gif")
+    say Typing(4000)
+    say "Pour information, les déplacements se font avec les flèches, néanmoins vous pouvez aussi utiliser les touches **Z Q S D**  de votre clavier."
+    say Typing(6000)
+    say "Envie d'accélérer ? Appuyer sur **shift** en même temps que la touche de déplacement."
+    say Typing(2000)
+		say Video("https://mapwa.net/static/perso/2022/map/qg/videos/WA-tuto-walk-speed-shift.mp4")
+    say Typing(6000)
+    say "Enfin, en bas à droite, vous pouvez à tout moment désactiver ou activer votre **microphone** ou votre **caméra**, ou les deux."
+    say Typing(3000)
+    say Video("https://mapwa.net/static/perso/2022/map/qg/videos/WA-tuto-icon-microphone-camera.mp4")
+		goto fintuto
+	}
+
+	if (event match CONTACT) {
+
+		say Typing(1000)
+    say Image("https://mapwa.net/static/perso/2022/map/qg/images/WA-bulle-rencontre.png")
+		say "Quand vous vous rapprochez d'une personne, une bulle apparaît, et tu peux instantannément discuter avec cette personne."
+    say Typing(1000)
+    say "De même si une personne s'approche de vous, un son vous préviendra."
+    say Typing(1000)
+    say "Ce mode de conversation est limité à 4 personnes, à 4 la bulle devient rouge."
+    say Typing(1000)
+		say Video("https://mapwa.net/static/perso/2022/map/qg/videos/WA-conversation-bubble.mp4")
+    say Typing(1000)
+		goto fintuto
+	}
+
+	if (event match VISIOCONF) {
+		say Typing(1000)
+		say "Oui, voici la carte décrivant les différents endroits :"
+    say Typing(1000)
+    say Image("https://mapwa.net/static/perso/2022/map/qg/qg-PP.png")
+    say "à suivre"
+		goto fintuto
+	}
+
+  if (event match DECOR) {
+		say Typing(1000)
+		say "Quand vous vous déplacez sur des traces de pas, vous verrez une fenêtre apparaître."
+		goto fintuto
+	}
+
+fintuto:
+  say "Que voulez-vous faire ?"
+  do BACK1 = Button("⬆️Revenir à la liste des fonctionalités")
+	do BACK2 = Button("⬆️Retour au menu d'accueil")
+    say Question(
+     button_type="quick_reply",
+     buttons = [BACK1, BACK2]
+  )
+  hold
+
+	 if (event match BACK1) {
+		say Typing(1000)
+		goto flow QG_tutoriel
+	}
+
+	 if (event match BACK2) {
+		say Typing(1000)
+		goto flow Default
+	}
